@@ -27,6 +27,7 @@ private:
 public slots:
     void recibirDatos(const QByteArray&datos);
     void enviar();
+    void disponibles();
 };
 
 #endif // MAINWINDOW_H
