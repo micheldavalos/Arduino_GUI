@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "arduino.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Arduino arduino;
+
+public slots:
+    void recibirDatos(const QByteArray&datos);
+    void enviar();
 };
 
 #endif // MAINWINDOW_H
