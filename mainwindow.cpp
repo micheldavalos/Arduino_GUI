@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(puertoSeleccionado(int)));
 
 //    conectar();
-    const QHash<size_t, QSerialPortInfo> puertos = arduino.disponibles();
+    puertos = arduino.disponibles();
 
     foreach(auto puerto, puertos)
     {
@@ -66,5 +66,20 @@ void MainWindow::disponibles()
 
 void MainWindow::puertoSeleccionado(int index)
 {
-    qDebug() << index;
+    ui->comboBox_2->clear();
+    ui->comboBox->itemText(index);
+
+    int posicion = -1;
+    int valor;
+    foreach(auto e, puertos[index].standardBaudRates())
+    {
+        ui->comboBox_2->addItem(QString::number(e));
+        posicion++;
+        if(e == 9600)
+            valor = posicion;
+
+    }
+
+    if( posicion > -1)
+        ui->comboBox_2->setCurrentIndex(valor);
 }

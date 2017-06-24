@@ -20,6 +20,7 @@ public:
 private:
     Ui::MainWindow *ui;
     Arduino arduino;
+    QHash<size_t, QSerialPortInfo> puertos;
 
     void conectar();
     void desconectar();
