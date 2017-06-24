@@ -10,7 +10,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->botonEnviar, SIGNAL(clicked(bool)), this, SLOT(enviar()));
     connect(&arduino, SIGNAL(datos(QByteArray)), this, SLOT(recibirDatos(QByteArray)));
     connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(puertoSeleccionado(int)));
+    connect(ui->pushButtonConectar, SIGNAL(clicked(bool)), this, SLOT(conectar()));
 
+    ui->pushButtonConectar->setEnabled(false);
+    ui->pushButtonDesconectar->setEnabled(false);
 //    conectar();
     puertos = arduino.disponibles();
 
@@ -27,8 +30,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::conectar()
 {
-//    qDebug() << "conectar";
-    arduino.conectar(1);
+    qDebug() << "conectar";
+    if( arduino.conectar(1) )
+    {
+        ui->pushButtonConectar->setEnabled(false);
+        ui->pushButtonDesconectar->setEnabled(true);
+    }
 }
 
 void MainWindow::desconectar()
@@ -80,6 +87,8 @@ void MainWindow::puertoSeleccionado(int index)
 
     }
 
-    if( posicion > -1)
+    if( posicion > -1){
         ui->comboBox_2->setCurrentIndex(valor);
+        ui->pushButtonConectar->setEnabled(true);
+    }
 }

@@ -22,7 +22,6 @@ private:
     Arduino arduino;
     QHash<size_t, QSerialPortInfo> puertos;
 
-    void conectar();
     void desconectar();
 
 public slots:
@@ -31,6 +30,7 @@ public slots:
     void disponibles();
 
 private slots:
+    void conectar();
     void puertoSeleccionado(int index);
 };
 

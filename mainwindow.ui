@@ -72,14 +72,14 @@
             <widget class="QComboBox" name="comboBox_2"/>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="pushButtonConectar">
              <property name="text">
               <string>Conectar</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="pushButtonDesconectar">
              <property name="text">
               <string>Desconectar</string>
              </property>
@@ -112,7 +112,7 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
