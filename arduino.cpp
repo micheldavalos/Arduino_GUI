@@ -44,10 +44,10 @@ bool Arduino::desconectar()
     {
         if(serial->isOpen())
         {
+            disconnect(serial, SIGNAL(readyRead()), this, SLOT(lectura()));
             serial->close();
             serial->deleteLater();
             serial = nullptr;
-            disconnect(serial, SIGNAL(readyRead()), this, SLOT(lectura()));
 
             return true;
         }

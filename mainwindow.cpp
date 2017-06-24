@@ -11,10 +11,24 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&arduino, SIGNAL(datos(QByteArray)), this, SLOT(recibirDatos(QByteArray)));
     connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(puertoSeleccionado(int)));
     connect(ui->pushButtonConectar, SIGNAL(clicked(bool)), this, SLOT(conectar()));
+    connect(ui->pushButtonDesconectar, SIGNAL(clicked(bool)), this, SLOT(desconectar()));
 
+    ui->botonEnviar->setEnabled(false);
     ui->pushButtonConectar->setEnabled(false);
     ui->pushButtonDesconectar->setEnabled(false);
-//    conectar();
+
+    actualizaPuertos();
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::actualizaPuertos()
+{
+    ui->comboBox->clear();
     puertos = arduino.disponibles();
 
     foreach(auto puerto, puertos)
@@ -23,16 +37,19 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
 void MainWindow::conectar()
 {
     qDebug() << "conectar";
-    if( arduino.conectar(1) )
+//    size_t indice = 0;
+//    foreach(auto puerto, puertos)
+//    {
+//        puerto.portName() == ui->comboBox->currentText() ?
+//    }
+
+
+    if( arduino.conectar(ui->comboBox->currentIndex()) ) // modificar para que envie el puerto seleccionado
     {
+        ui->botonEnviar->setEnabled(true);
         ui->pushButtonConectar->setEnabled(false);
         ui->pushButtonDesconectar->setEnabled(true);
     }
@@ -40,7 +57,13 @@ void MainWindow::conectar()
 
 void MainWindow::desconectar()
 {
-    arduino.desconectar();
+    if( arduino.desconectar() )
+    {
+        ui->botonEnviar->setEnabled(false);
+        ui->pushButtonDesconectar->setEnabled(false);
+
+        actualizaPuertos();
+    }
 }
 
 void MainWindow::recibirDatos(const QByteArray &datos)
