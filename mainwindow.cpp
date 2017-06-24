@@ -32,6 +32,9 @@ void MainWindow::actualizaPuertos()
     ui->comboBox->clear();
     puertos = arduino.getSerial_disponibles();
 
+    ui->comboBox->setEnabled(true);
+    ui->comboBox_2->setEnabled(true);
+
     for(int i = 0; i < puertos.size(); i++)
     {
         ui->comboBox->insertItem(i, puertos[i].portName());
@@ -50,6 +53,9 @@ void MainWindow::conectar()
         ui->botonEnviar->setEnabled(true);
         ui->pushButtonConectar->setEnabled(false);
         ui->pushButtonDesconectar->setEnabled(true);
+
+        ui->comboBox->setEnabled(false);
+        ui->comboBox_2->setEnabled(false);
     }
 }
 
