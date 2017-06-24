@@ -72,7 +72,7 @@ void Arduino::lectura()
         //    QString texto(data);
         //    QTextStream cout(stdout);
 
-        //    cout << "Respuesta: " << texto << endl;
+        //   cout << "Respuesta: " << texto << endl;
         emit datos(data_);
     }
 }
@@ -86,10 +86,12 @@ const QHash<size_t, QSerialPortInfo> &Arduino::disponibles()
 
     //    QTextStream cout(stdout);
     foreach (auto l, seriales_) {
+        qDebug() << l.portName() << endl;
+//        serial_disponibles[index++] = l;
         if( l.portName().contains(QRegExp("^cu.*$")))
         {
-            //            cout << l.portName() << endl;
             serial_disponibles[index++] = l;
+
         }
     }
 

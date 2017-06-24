@@ -28,6 +28,9 @@ public slots:
     void recibirDatos(const QByteArray&datos);
     void enviar();
     void disponibles();
+private slots:
+    void on_dial_sliderMoved(int position);
+    void on_dial_0_sliderMoved(int position);
 };
 
 #endif // MAINWINDOW_H
