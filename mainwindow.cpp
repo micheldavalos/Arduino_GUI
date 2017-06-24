@@ -32,9 +32,9 @@ void MainWindow::actualizaPuertos()
     ui->comboBox->clear();
     puertos = arduino.getSerial_disponibles();
 
-    foreach(auto puerto, puertos)
+    for(int i = 0; i < puertos.size(); i++)
     {
-        ui->comboBox->addItem(puerto.portName());
+        ui->comboBox->insertItem(i, puertos[i].portName());
     }
 }
 
