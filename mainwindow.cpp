@@ -57,3 +57,8 @@ void MainWindow::disponibles()
 //    ui->menuPuertos->addAction("COM1");
     qDebug() << "aqui";
 }
+
+void MainWindow::on_dial_valueChanged(int value)
+{
+    ui->lineEdit->setText(QString::number(value));
+}
