@@ -63,6 +63,44 @@ void MainWindow::on_dial_valueChanged(int value)
     ui->lineEdit->setText(QString::number(value));
     if(value>180)
         ui->dial->setValue(180);
-    if(value<0)
+    else if(value<0)
         ui->dial->setValue(0);
+}
+
+void MainWindow::on_lineEdit_returnPressed()
+{
+    int value;
+    value = ui->lineEdit->text().toInt();
+    if(value>180)
+        ui->dial->setValue(180);
+    else if(value<0)
+        ui->dial->setValue(0);
+    else
+        ui->dial->setValue(value);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+//    int value;
+//    value = ui->lineEdit->text().toInt();
+//    value = value + 1;
+//    if(value>180)
+//        ui->dial->setValue(180);
+//    else if(value<0)
+//        ui->dial->setValue(0);
+//    else
+//        ui->dial->setValue(value);
+}
+
+void MainWindow::on_pushButton_pressed()
+{
+//    int value;
+//    value = ui->lineEdit->text().toInt();
+//    value = value + 1;
+//    if(value>180)
+//        ui->dial->setValue(180);
+//    else if(value<0)
+//        ui->dial->setValue(0);
+//    else
+//        ui->dial->setValue(value);
 }

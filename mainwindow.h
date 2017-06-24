@@ -5,6 +5,9 @@
 #include <QMessageBox>
 #include "arduino.h"
 
+#define MAX_ANGLE 180
+#define MIN_ANGLE 0
+
 namespace Ui {
 class MainWindow;
 }
@@ -30,6 +33,9 @@ public slots:
     void disponibles();
 private slots:
     void on_dial_valueChanged(int value);
+    void on_lineEdit_returnPressed();
+    void on_pushButton_clicked();
+    void on_pushButton_pressed();
 };
 
 #endif // MAINWINDOW_H
