@@ -39,13 +39,10 @@ void MainWindow::actualizaPuertos()
 
 void MainWindow::conectar()
 {
-    qDebug() << "conectar";
-//    size_t indice = 0;
-//    foreach(auto puerto, puertos)
-//    {
-//        puerto.portName() == ui->comboBox->currentText() ?
-//    }
+//    qDebug() << "conectar";
 
+    bool ok;
+    arduino.setBaudRate(ui->comboBox_2->currentText().toInt(&ok));
 
     if( arduino.conectar(ui->comboBox->currentIndex()) ) // modificar para que envie el puerto seleccionado
     {

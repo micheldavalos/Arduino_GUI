@@ -25,6 +25,7 @@ private:
     void actualizaPuertos();
 
 
+
 public slots:
     void recibirDatos(const QByteArray&datos);
     void enviar();

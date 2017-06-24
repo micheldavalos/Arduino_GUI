@@ -20,6 +20,8 @@ bool Arduino::conectar(QSerialPortInfo &port)
     if(serial == nullptr)
     {
         serial = new QSerialPort(port);
+        serial->setBaudRate(baudRate);
+        qDebug() << serial->portName() << serial->baudRate() << baudRate;
         bool conexion = serial->open(QIODevice::ReadWrite);
         if(conexion)
         {
@@ -35,6 +37,16 @@ bool Arduino::conectar(QSerialPortInfo &port)
             return false;
         }
     }
+}
+
+qint32 Arduino::getBaudRate() const
+{
+    return baudRate;
+}
+
+void Arduino::setBaudRate(const qint32 &value)
+{
+    baudRate = value;
 }
 
 
