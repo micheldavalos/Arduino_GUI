@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->botonEnviar, SIGNAL(clicked(bool)), this, SLOT(enviar()));
     connect(&arduino, SIGNAL(datos(QByteArray)), this, SLOT(recibirDatos(QByteArray)));
 
-    conectar();
+//    conectar();
 
 }
 
