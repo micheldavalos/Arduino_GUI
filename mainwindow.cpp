@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     actualizaPuertos();
 
+    labelBaudrate = labelConectado = nullptr;
+
 }
 
 MainWindow::~MainWindow()
@@ -56,6 +58,22 @@ void MainWindow::conectar()
 
         ui->comboBox->setEnabled(false);
         ui->comboBox_2->setEnabled(false);
+
+        if( labelConectado == nullptr)
+        {
+            labelConectado = new QLabel("Conectado: " + ui->comboBox->currentText());
+            ui->statusBar->addWidget(labelConectado);
+        }
+        if( labelBaudrate == nullptr)
+        {
+            labelBaudrate = new QLabel("Baudrate: " + ui->comboBox_2->currentText());
+            ui->statusBar->addWidget(labelBaudrate);
+        }
+        labelConectado->setText(("Conectado: " + ui->comboBox->currentText()));
+        labelBaudrate->setText("Baudrate: " + ui->comboBox_2->currentText());
+        labelConectado->show();
+        labelBaudrate->show();
+
     }
 }
 
@@ -67,6 +85,11 @@ void MainWindow::desconectar()
         ui->pushButtonDesconectar->setEnabled(false);
 
         actualizaPuertos();
+
+//        ui->statusBar->removeWidget(labelConectado);
+//        ui->statusBar->removeWidget(labelBaudrate);
+        labelConectado->hide();
+        labelBaudrate->hide();
     }
 }
 

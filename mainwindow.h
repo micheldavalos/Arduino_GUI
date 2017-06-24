@@ -24,6 +24,8 @@ private:
 
     void actualizaPuertos();
 
+    QLabel *labelConectado;
+    QLabel *labelBaudrate;
 
 
 public slots:
