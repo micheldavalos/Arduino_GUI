@@ -26,11 +26,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    arduino.cpp
+    arduino.cpp \
+    controles.cpp \
+    servo.cpp
 
 HEADERS += \
         mainwindow.h \
-    arduino.h
+    arduino.h \
+    controles.h \
+    servo.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    controles.ui
