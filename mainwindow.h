@@ -42,3 +42,4 @@ private slots:
 };
 
 #endif // MAINWINDOW_H
+

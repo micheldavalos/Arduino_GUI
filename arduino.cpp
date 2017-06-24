@@ -133,4 +133,3 @@ void Arduino::enviar(const QByteArray &bytes)
     }
     else qDebug() << "Error, no está conectado";
 }
-

@@ -146,3 +146,4 @@ void MainWindow::puertoSeleccionado(int index)
         ui->pushButtonConectar->setEnabled(true);
     }
 }
+
