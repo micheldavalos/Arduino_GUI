@@ -28,8 +28,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::actualizaPuertos()
 {
+    arduino.disponibles();
     ui->comboBox->clear();
-    puertos = arduino.disponibles();
+    puertos = arduino.getSerial_disponibles();
 
     foreach(auto puerto, puertos)
     {

@@ -89,7 +89,17 @@ void Arduino::lectura()
     }
 }
 
-const QHash<size_t, QSerialPortInfo> &Arduino::disponibles()
+QHash<size_t, QSerialPortInfo> Arduino::getSerial_disponibles() const
+{
+    return serial_disponibles;
+}
+
+void Arduino::setSerial_disponibles(const QHash<size_t, QSerialPortInfo> &value)
+{
+    serial_disponibles = value;
+}
+
+void Arduino::disponibles()
 {
     QSerialPortInfo *seriales = new QSerialPortInfo();
     QList<QSerialPortInfo> seriales_ = seriales->availablePorts();
@@ -110,7 +120,7 @@ const QHash<size_t, QSerialPortInfo> &Arduino::disponibles()
             }
     }
 
-    return serial_disponibles;
+//    return serial_disponibles;
 }
 
 void Arduino::enviar(const QByteArray &bytes)

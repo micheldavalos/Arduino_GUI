@@ -22,11 +22,14 @@ public:
     explicit Arduino();
     bool conectar(size_t indice);
     bool desconectar();
-    const QHash<size_t, QSerialPortInfo> &disponibles();
     void enviar(const QByteArray &bytes);
+    void disponibles();
 
     qint32 getBaudRate() const;
     void setBaudRate(const qint32 &value);
+
+    QHash<size_t, QSerialPortInfo> getSerial_disponibles() const;
+    void setSerial_disponibles(const QHash<size_t, QSerialPortInfo> &value);
 
 signals:
     void datos(QByteArray);
