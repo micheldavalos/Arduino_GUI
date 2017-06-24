@@ -2,7 +2,7 @@
 
 Arduino::Arduino()
 {
-    disponibles();
+//    disponibles();
     serial = nullptr;
 }
 
@@ -104,6 +104,8 @@ void Arduino::disponibles()
     QSerialPortInfo *seriales = new QSerialPortInfo();
     QList<QSerialPortInfo> seriales_ = seriales->availablePorts();
 
+    serial_disponibles.clear();
+
     size_t index = 0;
 
     //    QTextStream cout(stdout);
@@ -115,7 +117,7 @@ void Arduino::disponibles()
             if( l.portName().contains(QRegExp("^COM.$")))
 #endif
             {
-//                qDebug() << l.portName() << endl;
+                qDebug() << l.portName() << endl;
                 serial_disponibles[index++] = l;
             }
     }

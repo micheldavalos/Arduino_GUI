@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(puertoSeleccionado(int)));
     connect(ui->pushButtonConectar, SIGNAL(clicked(bool)), this, SLOT(conectar()));
     connect(ui->pushButtonDesconectar, SIGNAL(clicked(bool)), this, SLOT(desconectar()));
+    connect(ui->pushButton, SIGNAL(clicked(bool)), ui->plainTextEditRespuesta, SLOT(clear()));
 
     ui->botonEnviar->setEnabled(false);
     ui->pushButtonConectar->setEnabled(false);
@@ -30,8 +31,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::actualizaPuertos()
 {
-    arduino.disponibles();
     ui->comboBox->clear();
+    arduino.disponibles();
     puertos = arduino.getSerial_disponibles();
 
     ui->comboBox->setEnabled(true);
