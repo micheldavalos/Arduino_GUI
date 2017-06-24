@@ -61,4 +61,8 @@ void MainWindow::disponibles()
 void MainWindow::on_dial_valueChanged(int value)
 {
     ui->lineEdit->setText(QString::number(value));
+    if(value>180)
+        ui->dial->setValue(180);
+    if(value<0)
+        ui->dial->setValue(0);
 }
