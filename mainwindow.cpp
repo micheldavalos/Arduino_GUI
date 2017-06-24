@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->botonEnviar, SIGNAL(clicked(bool)), this, SLOT(enviar()));
     connect(&arduino, SIGNAL(datos(QByteArray)), this, SLOT(recibirDatos(QByteArray)));
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(puertoSeleccionado(int)));
 
 //    conectar();
     const QHash<size_t, QSerialPortInfo> puertos = arduino.disponibles();
@@ -61,4 +62,9 @@ void MainWindow::disponibles()
 {
 //    ui->menuPuertos->addAction("COM1");
     qDebug() << "aqui";
+}
+
+void MainWindow::puertoSeleccionado(int index)
+{
+    qDebug() << index;
 }

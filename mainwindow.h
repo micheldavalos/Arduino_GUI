@@ -28,6 +28,9 @@ public slots:
     void recibirDatos(const QByteArray&datos);
     void enviar();
     void disponibles();
+
+private slots:
+    void puertoSeleccionado(int index);
 };
 
 #endif // MAINWINDOW_H
