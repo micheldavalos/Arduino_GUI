@@ -26,6 +26,7 @@ private:
 
     QLabel *labelConectado;
     QLabel *labelBaudrate;
+    QString puertoActual;
 
 
 public slots:

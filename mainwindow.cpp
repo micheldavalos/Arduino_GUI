@@ -41,6 +41,7 @@ void MainWindow::actualizaPuertos()
     {
         ui->comboBox->insertItem(i, puertos[i].portName());
     }
+    ui->comboBox->setCurrentText(puertoActual);
 }
 
 void MainWindow::conectar()
@@ -73,6 +74,8 @@ void MainWindow::conectar()
         labelBaudrate->setText("Baudrate: " + ui->comboBox_2->currentText());
         labelConectado->show();
         labelBaudrate->show();
+
+        puertoActual = ui->comboBox->currentText();
 
     }
 }
