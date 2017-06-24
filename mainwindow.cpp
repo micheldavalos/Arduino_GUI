@@ -11,7 +11,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&arduino, SIGNAL(datos(QByteArray)), this, SLOT(recibirDatos(QByteArray)));
 
 //    conectar();
+    const QHash<size_t, QSerialPortInfo> puertos = arduino.disponibles();
 
+    foreach(auto puerto, puertos)
+    {
+        ui->comboBox->addItem(puerto.portName());
+    }
 }
 
 MainWindow::~MainWindow()

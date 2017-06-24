@@ -86,11 +86,16 @@ const QHash<size_t, QSerialPortInfo> &Arduino::disponibles()
 
     //    QTextStream cout(stdout);
     foreach (auto l, seriales_) {
+#ifdef Q_OS_MACOS
         if( l.portName().contains(QRegExp("^cu.*$")))
-        {
-            //            cout << l.portName() << endl;
-            serial_disponibles[index++] = l;
-        }
+#endif
+#ifdef Q_OS_WIN
+            if( l.portName().contains(QRegExp("^COM.$")))
+#endif
+            {
+//                qDebug() << l.portName() << endl;
+                serial_disponibles[index++] = l;
+            }
     }
 
     return serial_disponibles;
