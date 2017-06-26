@@ -104,6 +104,7 @@ void MainWindow::recibirDatos(const QByteArray &datos)
 {
 //    qDebug() << datos;
     ui->plainTextEditRespuesta->insertPlainText(QString(datos));
+    ui->plainTextEditRespuesta->centerCursor();
 }
 
 void MainWindow::enviar()
