@@ -110,11 +110,15 @@ void Arduino::disponibles()
 
     //    QTextStream cout(stdout);
     foreach (auto l, seriales_) {
+
 #ifdef Q_OS_MACOS
         if( l.portName().contains(QRegExp("^cu.*$")))
 #endif
 #ifdef Q_OS_WIN
-            if( l.portName().contains(QRegExp("^COM.$")))
+        if( l.portName().contains(QRegExp("^COM.$")))
+#endif
+#ifdef Q_OS_LINUX
+        if( l.portName().contains(QRegExp("^ttyACM.$")))
 #endif
             {
                 qDebug() << l.portName() << endl;

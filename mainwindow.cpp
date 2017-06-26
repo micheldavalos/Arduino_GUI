@@ -79,6 +79,9 @@ void MainWindow::conectar()
         puertoActual = ui->comboBox->currentText();
 
     }
+    else {
+        QMessageBox::critical(this, "Advertencia", "Error al conectar");
+    }
 }
 
 void MainWindow::desconectar()
