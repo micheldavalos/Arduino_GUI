@@ -39,6 +39,7 @@ private slots:
     void puertoSeleccionado(int index);
     void desconectar();
 
+    void on_horizontalSlider_valueChanged(int value);
 };
 
 #endif // MAINWINDOW_H

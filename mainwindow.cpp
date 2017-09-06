@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -21,6 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
     actualizaPuertos();
 
     labelBaudrate = labelConectado = nullptr;
+
+    connect(ui->horizontalSlider_blue, SIGNAL(valueChanged(int)), this, SLOT(on_horizontalSlider_valueChanged(int)));
+    connect(ui->horizontalSlider_green, SIGNAL(valueChanged(int)), this, SLOT(on_horizontalSlider_valueChanged(int)));
 
 }
 
@@ -151,3 +157,24 @@ void MainWindow::puertoSeleccionado(int index)
     }
 }
 
+
+void MainWindow::on_horizontalSlider_valueChanged(int value)
+{
+    QJsonObject color;
+    QString objecto = sender()->objectName();
+
+    if (objecto == "horizontalSlider")
+        color.insert("c", QJsonValue(0));
+    else if (objecto == "horizontalSlider_green")
+        color.insert("c", QJsonValue(1));
+    else if (objecto == "horizontalSlider_blue")
+        color.insert("c", QJsonValue(2));
+
+
+    color.insert("v", QJsonValue(value));
+    qDebug() << color;
+    qDebug() << QJsonDocument(color).toJson(QJsonDocument::Compact);
+
+    arduino.enviar(QJsonDocument(color).toJson(QJsonDocument::Compact));
+
+}
