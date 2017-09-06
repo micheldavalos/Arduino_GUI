@@ -67,6 +67,10 @@ void MainWindow::conectar()
         ui->comboBox->setEnabled(false);
         ui->comboBox_2->setEnabled(false);
 
+        ui->horizontalSlider->setEnabled(true);
+        ui->horizontalSlider_green->setEnabled(true);
+        ui->horizontalSlider_blue->setEnabled(true);
+
         if( labelConectado == nullptr)
         {
             labelConectado = new QLabel("Conectado: " + ui->comboBox->currentText());
@@ -97,12 +101,19 @@ void MainWindow::desconectar()
         ui->botonEnviar->setEnabled(false);
         ui->pushButtonDesconectar->setEnabled(false);
 
+        ui->horizontalSlider->setEnabled(false);
+        ui->horizontalSlider_green->setEnabled(false);
+        ui->horizontalSlider_blue->setEnabled(false);
+
+
         actualizaPuertos();
 
 //        ui->statusBar->removeWidget(labelConectado);
 //        ui->statusBar->removeWidget(labelBaudrate);
         labelConectado->hide();
         labelBaudrate->hide();
+
+
     }
 }
 

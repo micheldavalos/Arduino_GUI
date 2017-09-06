@@ -19,6 +19,12 @@
      <layout class="QGridLayout" name="gridLayout">
       <item row="2" column="2" colspan="3">
        <widget class="QSlider" name="horizontalSlider">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="maximum">
+         <number>255</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -33,6 +39,12 @@
       </item>
       <item row="3" column="2" colspan="3">
        <widget class="QSlider" name="horizontalSlider_green">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="maximum">
+         <number>255</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -151,6 +163,12 @@
       </item>
       <item row="4" column="2" colspan="3">
        <widget class="QSlider" name="horizontalSlider_blue">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="maximum">
+         <number>255</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
