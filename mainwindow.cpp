@@ -91,6 +91,7 @@ void MainWindow::conectar()
         labelBaudrate->show();
 
         puertoActual = ui->comboBox->currentText();
+        baudrateActual = ui->comboBox_2->currentText();
 
         repaint();
     }
@@ -116,6 +117,7 @@ void MainWindow::desconectar()
         ui->spinBox->setEnabled(false);
 
         actualizaPuertos();
+        ui->comboBox_2->setCurrentText(baudrateActual);
 
 //        ui->statusBar->removeWidget(labelConectado);
 //        ui->statusBar->removeWidget(labelBaudrate);
