@@ -261,3 +261,14 @@ void MainWindow::on_pushButton_6_clicked()
 
     arduino.enviar(QJsonDocument(json).toJson(QJsonDocument::Compact));
 }
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    QJsonObject json;
+    QString objecto = sender()->objectName();
+
+    json.insert("tipo", QJsonValue(5));
+    json.insert("valor", 1);
+
+    arduino.enviar(QJsonDocument(json).toJson(QJsonDocument::Compact));
+}
