@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     labelBaudrate = labelConectado = nullptr;
 
-    connect(ui->horizontalSlider_blue, SIGNAL(valueChanged(int)), this, SLOT(on_horizontalSlider_valueChanged(int)));
+//    connect(ui->horizontalSlider_blue, SIGNAL(valueChanged(int)), this, SLOT(on_horizontalSlider_valueChanged(int)));
     connect(ui->horizontalSlider_green, SIGNAL(valueChanged(int)), this, SLOT(on_horizontalSlider_valueChanged(int)));
 
 }
@@ -67,9 +67,9 @@ void MainWindow::conectar()
         ui->comboBox->setEnabled(false);
         ui->comboBox_2->setEnabled(false);
 
-        ui->horizontalSlider->setEnabled(true);
         ui->horizontalSlider_green->setEnabled(true);
-        ui->horizontalSlider_blue->setEnabled(true);
+        ui->pushButton_2->setEnabled(true);
+        ui->pushButton_4->setEnabled(true);
 
         if( labelConectado == nullptr)
         {
@@ -101,9 +101,11 @@ void MainWindow::desconectar()
         ui->botonEnviar->setEnabled(false);
         ui->pushButtonDesconectar->setEnabled(false);
 
-        ui->horizontalSlider->setEnabled(false);
         ui->horizontalSlider_green->setEnabled(false);
-        ui->horizontalSlider_blue->setEnabled(false);
+        ui->pushButton_2->setEnabled(false);
+        ui->pushButton_3->setEnabled(false);
+        ui->pushButton_4->setEnabled(false);
+        ui->pushButton_5->setEnabled(false);
 
 
         actualizaPuertos();
@@ -171,21 +173,91 @@ void MainWindow::puertoSeleccionado(int index)
 
 void MainWindow::on_horizontalSlider_valueChanged(int value)
 {
-    QJsonObject color;
+    QJsonObject json;
     QString objecto = sender()->objectName();
 
-    if (objecto == "horizontalSlider")
-        color.insert("c", QJsonValue(0));
-    else if (objecto == "horizontalSlider_green")
-        color.insert("c", QJsonValue(1));
-    else if (objecto == "horizontalSlider_blue")
-        color.insert("c", QJsonValue(2));
 
+    if (objecto == "horizontalSlider_green")
+        json.insert("tipo", QJsonValue(2));
 
-    color.insert("v", QJsonValue(value));
-    qDebug() << color;
-    qDebug() << QJsonDocument(color).toJson(QJsonDocument::Compact);
+    json.insert("valor", QJsonValue(value));
+//    qDebug() << json;
+//    qDebug() << QJsonDocument(json).toJson(QJsonDocument::Compact);
 
-    arduino.enviar(QJsonDocument(color).toJson(QJsonDocument::Compact));
+    arduino.enviar(QJsonDocument(json).toJson(QJsonDocument::Compact));
 
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QJsonObject json;
+    QString objecto = sender()->objectName();
+
+    json.insert("tipo", QJsonValue(1));
+    json.insert("valor", 1);
+
+    arduino.enviar(QJsonDocument(json).toJson(QJsonDocument::Compact));
+
+    ui->pushButton_3->setEnabled(true);
+    ui->pushButton_2->setEnabled(false);
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    QJsonObject json;
+    QString objecto = sender()->objectName();
+
+    json.insert("tipo", QJsonValue(1));
+    json.insert("valor", 0);
+
+    arduino.enviar(QJsonDocument(json).toJson(QJsonDocument::Compact));
+
+    ui->pushButton_3->setEnabled(false);
+    ui->pushButton_2->setEnabled(true);
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    QJsonObject json;
+    QString objecto = sender()->objectName();
+
+    json.insert("tipo", QJsonValue(3));
+    json.insert("valor", 1);
+
+    arduino.enviar(QJsonDocument(json).toJson(QJsonDocument::Compact));
+
+    ui->pushButton_4->setEnabled(false);
+    ui->pushButton_5->setEnabled(true);
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    QJsonObject json;
+    QString objecto = sender()->objectName();
+
+    json.insert("tipo", QJsonValue(3));
+    json.insert("valor", 0);
+
+    arduino.enviar(QJsonDocument(json).toJson(QJsonDocument::Compact));
+
+    ui->pushButton_4->setEnabled(true);
+    ui->pushButton_5->setEnabled(false);
+}
+
+void MainWindow::on_spinBox_valueChanged(int arg1)
+{
+//    qDebug() << arg1;
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+//    qDebug() << ui->spinBox->text().toInt();
+
+    QJsonObject json;
+    QString objecto = sender()->objectName();
+
+    json.insert("tipo", QJsonValue(4));
+    json.insert("valor", ui->spinBox->text().toInt());
+
+    arduino.enviar(QJsonDocument(json).toJson(QJsonDocument::Compact));
 }
