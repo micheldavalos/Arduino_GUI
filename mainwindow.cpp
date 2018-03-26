@@ -70,6 +70,10 @@ void MainWindow::conectar()
         ui->horizontalSlider_green->setEnabled(true);
         ui->pushButton_2->setEnabled(true);
         ui->pushButton_4->setEnabled(true);
+        ui->pushButton_6->setEnabled(true);
+        ui->pushButton_7->setEnabled(true);
+        ui->spinBox->setEnabled(true);
+
 
         if( labelConectado == nullptr)
         {
@@ -88,6 +92,7 @@ void MainWindow::conectar()
 
         puertoActual = ui->comboBox->currentText();
 
+        repaint();
     }
     else {
         QMessageBox::critical(this, "Advertencia", "Error al conectar");
@@ -106,7 +111,9 @@ void MainWindow::desconectar()
         ui->pushButton_3->setEnabled(false);
         ui->pushButton_4->setEnabled(false);
         ui->pushButton_5->setEnabled(false);
-
+        ui->pushButton_6->setEnabled(false);
+        ui->pushButton_7->setEnabled(false);
+        ui->spinBox->setEnabled(false);
 
         actualizaPuertos();
 
@@ -115,6 +122,7 @@ void MainWindow::desconectar()
         labelConectado->hide();
         labelBaudrate->hide();
 
+        repaint();
 
     }
 }
