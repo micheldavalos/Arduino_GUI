@@ -198,19 +198,6 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="1" colspan="2">
-       <widget class="QSpinBox" name="spinBox">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>60</number>
-        </property>
-       </widget>
-      </item>
       <item row="5" column="3" colspan="2">
        <widget class="QPushButton" name="pushButton_6">
         <property name="enabled">
@@ -235,6 +222,19 @@
         </property>
         <property name="text">
          <string>Leer</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QSpinBox" name="spinBox">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>60</number>
         </property>
        </widget>
       </item>
